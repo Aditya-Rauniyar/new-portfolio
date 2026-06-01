@@ -13,8 +13,18 @@ import {
   Code,
   Layers,
   Award,
-  Sparkles
+  Sparkles,
+  Eye,
+  Terminal,
+  ExternalLink,
+  ShieldAlert
 } from 'lucide-react';
+
+// Import visual project mockups
+import sehatvaniMockup from './assets/sehatvani_mockup.png';
+import svicPortalMockup from './assets/svic_portal_mockup.png';
+import naariSafetyMockup from './assets/naari_safety_mockup.png';
+import bipartitelinkMockup from './assets/bipartitelink_mockup.png';
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -33,8 +43,63 @@ const Linkedin = (props) => (
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('core');
+  const [projectMode, setProjectMode] = useState('gallery'); // 'gallery' or 'ide'
   const [typedText, setTypedText] = useState('');
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
+
+  // Union of premium projects data
+  const visualProjects = [
+    {
+      id: 'sehatvani',
+      title: 'SehatVani',
+      sub: 'AI Medical Translation & Report Summarizer',
+      desc: 'An AI-powered clinical translation platform converting complex laboratory test parameters (T3, T4, Hemoglobin) into simplified, natural language explanations in Hindi and English. Integrates secure JWT authentication and custom Express REST API endpoints.',
+      img: sehatvaniMockup,
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'AI API'],
+      live: 'https://github.com/Aditya-Rauniyar',
+      metrics: 'Uplink: SECURE | Latency: 120ms | Security: JWT Router'
+    },
+    {
+      id: 'bipartitelink',
+      title: 'BipartiteLink',
+      sub: 'C++ Peer-to-Peer Matchmaking Engine',
+      desc: 'A futuristic peer-to-peer matchmaking system built on discrete bipartite graph complementary search logic. Instantly matches study partners who possess teaching skills that overlap with the learning needs of others.',
+      img: bipartitelinkMockup,
+      tech: ['C++', 'Bipartite Graphs', 'Adjacency Lists', 'STL Vectors'],
+      live: 'https://github.com/Aditya-Rauniyar',
+      metrics: 'Complexity: O(N) | Index Hash: Custom | Uptime: 100%'
+    },
+    {
+      id: 'svic',
+      title: 'SVIC School Portal',
+      sub: 'Freelance College Notice Board & CMS',
+      desc: 'A production website built for Swami Vivekanand Intermediate College in Uttar Pradesh. Features integrated student notice boards and timetables driven by a headless Sanity.io CMS. Reduced initial paint delay by 35% using multi-threaded WebP conversions.',
+      img: svicPortalMockup,
+      tech: ['React.js', 'Sanity.io', 'TailwindCSS', 'WebP Optimizer'],
+      live: 'https://svic.co.in',
+      metrics: 'SEO Uptime: 100% | Paint Delay: -35% | Status: Deployed'
+    },
+    {
+      id: 'naari',
+      title: 'NAARI Safety Platform',
+      sub: 'Women Security & Geolocation SOS Alerts',
+      desc: 'An emergency rescue web platform featuring real-time location coordinate tracking, WebSockets emergency polling, and automated Twilio voice call and WhatsApp notification triggers for women safety.',
+      img: naariSafetyMockup,
+      tech: ['React Native', 'Socket.io', 'Node.js', 'Google Maps API', 'Twilio'],
+      live: 'https://github.com/Aditya-Rauniyar',
+      metrics: 'Accuracy: 98% | WS Latency: 180ms | Encrypt: AES-256'
+    },
+    {
+      id: 'blogapp',
+      title: 'Blog CRUD Engine',
+      sub: 'Backend REST API & MVC Router',
+      desc: 'A high-performance backend EJS template blogging platform, deploying MVC controllers to query indexed MongoDB collection arrays in near-constant search times. Supports markdown formatting and complete session logins.',
+      img: null, // Custom cyber-terminal style gradient will be rendered
+      tech: ['Node.js', 'Express.js', 'MongoDB', 'EJS Views', 'MVC Pattern'],
+      live: 'https://github.com/Aditya-Rauniyar',
+      metrics: 'Controller: MVC | Uptime: 99.9% | Schema: MongoDB Index'
+    }
+  ];
 
   // Contact Form State
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -249,16 +314,164 @@ export default function App() {
           </section>
         )}
 
-        {/* TAB 3: WORKSPACE EXPLORER (IDE FILE EXPLORER) */}
+        {/* TAB 3: WORKSPACE & PROJECT EXPLORER */}
         {activeTab === 'projects' && (
           <section className="reveal-in">
-            <h2 className="section-title text-mono" style={{ marginBottom: '6px' }}><span className="neon-text-mint">&gt;</span> SYSTEM_WORKSPACE_EXPLORER</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '28px', maxWidth: '600px', fontSize: '0.95rem' }}>
-              Interactive workspace file explorer detailing actual project directories, syntax-colored code buffers, and deep structural architectural metrics.
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '12px', marginBottom: '6px' }}>
+              <h2 className="section-title text-mono"><span className="neon-text-mint">&gt;</span> SYSTEM_WORKSPACE_EXPLORER</h2>
+              <span className="text-mono" style={{ fontSize: '0.7rem', color: 'var(--accent-mint)' }}>[ ACTIVE_MODULES: 5 ]</span>
+            </div>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '20px', maxWidth: '650px', fontSize: '0.95rem' }}>
+              Interactive system diagnostics displaying a visual gallery of deployed production software alongside active directories and core source buffers.
             </p>
 
-            {/* Custom VS-Code style explorer component */}
-            <CodeWorkspace />
+            {/* Smart Project Mode Select Deck */}
+            <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', borderBottom: '1px solid rgba(16, 185, 129, 0.1)', paddingBottom: '12px' }}>
+              <button 
+                onClick={() => setProjectMode('gallery')} 
+                className={`text-mono ${projectMode === 'gallery' ? 'neon-text-mint' : ''}`}
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  color: projectMode === 'gallery' ? 'var(--accent-mint)' : 'var(--text-secondary)', 
+                  fontSize: '0.82rem', 
+                  fontWeight: 'bold', 
+                  cursor: 'pointer', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px', 
+                  padding: '6px 14px', 
+                  borderRadius: '4px', 
+                  background: projectMode === 'gallery' ? 'rgba(16, 185, 129, 0.06)' : 'transparent',
+                  border: projectMode === 'gallery' ? '1px solid rgba(16, 185, 129, 0.2)' : '1px solid transparent',
+                  transition: 'all 0.22s cubic-bezier(0.4, 0, 0.2, 1)' 
+                }}
+              >
+                <Eye size={13} /> [ VISUAL_GALLERY ]
+              </button>
+              <button 
+                onClick={() => setProjectMode('ide')} 
+                className={`text-mono ${projectMode === 'ide' ? 'neon-text-mint' : ''}`}
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  color: projectMode === 'ide' ? 'var(--accent-mint)' : 'var(--text-secondary)', 
+                  fontSize: '0.82rem', 
+                  fontWeight: 'bold', 
+                  cursor: 'pointer', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px', 
+                  padding: '6px 14px', 
+                  borderRadius: '4px', 
+                  background: projectMode === 'ide' ? 'rgba(16, 185, 129, 0.06)' : 'transparent',
+                  border: projectMode === 'ide' ? '1px solid rgba(16, 185, 129, 0.2)' : '1px solid transparent',
+                  transition: 'all 0.22s cubic-bezier(0.4, 0, 0.2, 1)' 
+                }}
+              >
+                <Terminal size={13} /> [ SOURCE_EXPLORER ]
+              </button>
+            </div>
+
+            {/* View Render Node */}
+            {projectMode === 'gallery' ? (
+              <div className="reveal-in" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
+                {visualProjects.map((project) => (
+                  <div 
+                    key={project.id} 
+                    className="cyber-card cyber-corners project-visual-card" 
+                    style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      height: '100%', 
+                      padding: '0px', 
+                      overflow: 'hidden',
+                      background: 'rgba(8, 12, 28, 0.55)',
+                      border: '1px solid rgba(16, 185, 129, 0.12)'
+                    }}
+                  >
+                    {/* Visual Screenshot / Code Mockup Container */}
+                    <div style={{ position: 'relative', height: '175px', width: '100%', overflow: 'hidden', borderBottom: '1px solid rgba(16, 185, 129, 0.12)', background: '#040713' }}>
+                      {project.img ? (
+                        <img 
+                          src={project.img} 
+                          alt={project.title} 
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }} 
+                          className="project-card-image"
+                        />
+                      ) : (
+                        /* Beautiful Cyber router visual node mockup for Blog App */
+                        <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, rgba(4, 7, 19, 0.95) 0%, rgba(139, 92, 246, 0.15) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+                          <div className="laser-grid"><div className="laser-line"></div></div>
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.08)', border: '1px solid rgba(139, 92, 246, 0.2)', boxShadow: '0 0 15px rgba(139, 92, 246, 0.1)' }}>
+                            <Code size={26} className="neon-text-purple" style={{ animation: 'spin 16s linear infinite' }} />
+                          </div>
+                          <span className="text-mono" style={{ fontSize: '0.6rem', color: 'var(--accent-purple)', marginTop: '10px', letterSpacing: '0.15em', fontWeight: 'bold' }}>[ BACKEND_CRUD_MVC ]</span>
+                        </div>
+                      )}
+                      
+                      {/* Tech stack badge strip overlay */}
+                      <div style={{ position: 'absolute', bottom: '10px', left: '12px', display: 'flex', flexWrap: 'wrap', gap: '6px', zIndex: 10 }}>
+                        {project.tech.slice(0, 3).map((t, idx) => (
+                          <span key={idx} style={{ fontSize: '0.58rem', background: 'rgba(4, 7, 19, 0.9)', color: 'var(--text-primary)', border: '1px solid rgba(255,255,255,0.06)', padding: '3px 8px', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
+                            {t}
+                          </span>
+                        ))}
+                        {project.tech.length > 3 && (
+                          <span style={{ fontSize: '0.58rem', background: 'rgba(4, 7, 19, 0.9)', color: 'var(--accent-mint)', border: '1px solid rgba(16, 185, 129, 0.25)', padding: '3px 8px', borderRadius: '4px', fontFamily: 'var(--font-mono)', fontWeight: 'bold' }}>
+                            +{project.tech.length - 3}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Content Detail Panel */}
+                    <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '16px' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'nowrap' }}>
+                          <h3 className="neon-text-mint" style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '-0.01em' }}>{project.title}</h3>
+                          <span className="text-mono" style={{ fontSize: '0.55rem', color: 'var(--text-muted)', letterSpacing: '0.05em' }}>{project.id.toUpperCase()}_SYS_v1.0</span>
+                        </div>
+                        <h4 className="text-mono" style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600 }}>{project.sub}</h4>
+                        <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.42, marginTop: '4px' }}>
+                          {project.desc}
+                        </p>
+                      </div>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        {/* Telemetry Metrics strip */}
+                        <div className="text-mono" style={{ fontSize: '0.56rem', background: 'rgba(4, 7, 19, 0.4)', border: '1px solid rgba(16, 185, 129, 0.08)', borderRadius: '4px', padding: '6px 10px', color: 'var(--text-secondary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          [ {project.metrics} ]
+                        </div>
+
+                        {/* Control Actions Row */}
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <button 
+                            onClick={() => setProjectMode('ide')}
+                            className="cyber-btn"
+                            style={{ fontSize: '0.68rem', padding: '6px 12px' }}
+                          >
+                            <Terminal size={11} /> [VIEW_CODE]
+                          </button>
+                          
+                          <a 
+                            href={project.live} 
+                            target="_blank" 
+                            rel="noreferrer" 
+                            className="cyber-btn cyber-btn-cyan"
+                            style={{ fontSize: '0.68rem', padding: '6px 12px' }}
+                          >
+                            [LAUNCH] <ExternalLink size={11} />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <CodeWorkspace />
+            )}
           </section>
         )}
 

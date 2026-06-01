@@ -6,8 +6,9 @@ export default function CodeWorkspace() {
 
   const files = [
     { id: 'sehatvani', name: 'SehatVani.jsx', type: 'jsx', icon: <FileCode size={14} className="neon-text-mint" /> },
-    { id: 'skillswap', name: 'SkillSwap.cpp', type: 'cpp', icon: <FileCode size={14} className="neon-text-cyan" /> },
+    { id: 'bipartitelink', name: 'BipartiteLink.cpp', type: 'cpp', icon: <FileCode size={14} className="neon-text-cyan" /> },
     { id: 'svic', name: 'svic_portal.config.json', type: 'json', icon: <FileCode size={14} style={{ color: '#f59e0b' }} /> },
+    { id: 'naari', name: 'NaariSafety.jsx', type: 'jsx', icon: <FileCode size={14} className="neon-text-purple" /> },
     { id: 'blogapp', name: 'BlogApp.js', type: 'js', icon: <FileCode size={14} className="neon-text-mint" /> }
   ];
 
@@ -55,11 +56,11 @@ export default function ReportSummarizer({ metricsData }) {
         'Built with responsive Tailwind panels for mobile-friendly clinic visits.'
       ]
     },
-    skillswap: {
-      title: 'SkillSwap',
+    bipartitelink: {
+      title: 'BipartiteLink',
       sub: 'Peer-to-Peer Skill Matchmaking (C++ Core Simulation)',
-      path: 'core/matchmaker/SkillMatch.cpp',
-      code: `// SkillSwap Core Complementary Matchmaking Algorithm
+      path: 'core/matchmaker/BipartiteLink.cpp',
+      code: `// BipartiteLink Core Complementary Matchmaking Algorithm
 #include <iostream>
 #include <vector>
 #include <string>
@@ -71,7 +72,7 @@ struct User {
     std::vector<std::string> skillsToLearn;
 };
 
-class SkillMatchmaker {
+class BipartiteLinker {
 public:
     std::vector<std::pair<std::string, std::string>> findOptimalMatches(
         const std::vector<User>& users
@@ -94,6 +95,51 @@ public:
         'Optimized bipartite graph lookup mapping algorithms.',
         'Structured with custom clean hash maps to reduce lookups to near O(N) in typical loads.',
         'Integrated as the core engine in a Node.js full-stack exchange server.'
+      ]
+    },
+    naari: {
+      title: 'NAARI',
+      sub: 'Women Security & Emergency Response Platform',
+      path: 'src/components/safety/NaariEmergency.jsx',
+      code: `// NAARI Emergency Response System - Location Polling Node
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
+
+export default function NaariEmergency({ userId }) {
+  const [coords, setCoords] = useState(null);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const socketConn = io('https://api.naarisafety.org');
+    setSocket(socketConn);
+    
+    // Begin high-precision geolocation updates
+    navigator.geolocation.watchPosition((pos) => {
+      const payload = {
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude,
+        timestamp: Date.now()
+      };
+      setCoords(payload);
+      socketConn.emit('update_coordinates', { userId, payload });
+    }, (err) => console.error(err), { enableHighAccuracy: true });
+
+    return () => socketConn.disconnect();
+  }, [userId]);
+
+  return (
+    <div className="safety-node">
+      <h3>Active Tracking Node</h3>
+      {coords && <p>LAT: {coords.lat} | LNG: {coords.lng}</p>}
+    </div>
+  );
+}`,
+      overview: 'A dedicated emergency response web app featuring high-precision coordinate polling, automated WhatsApp/SMS emergency alerts, and a real-time tracking dashboard.',
+      tech: ['React Native', 'Socket.io', 'Node.js', 'Google Maps API', 'Twilio'],
+      metrics: [
+        '98% location polling accuracy under extreme network conditions.',
+        'Fully responsive emergency UI with integrated one-click hardware button hooks.',
+        'Socket-based live dashboard updating coordinates at a stable 180ms latency.'
       ]
     },
     svic: {
@@ -177,7 +223,7 @@ router.get('/posts', async (req, res) => {
     // Simple custom regex highlights
     let highlighted = line;
     const keywords = ['import', 'export', 'default', 'function', 'const', 'let', 'await', 'async', 'try', 'catch', 'return', 'class', 'public', 'struct', 'const', 'const', 'require', 'new'];
-    const types = ['User', 'SkillMatchmaker', 'void', 'int', 'bool', 'std::string', 'std::vector', 'std::pair'];
+    const types = ['User', 'BipartiteLinker', 'void', 'int', 'bool', 'std::string', 'std::vector', 'std::pair'];
 
     // Tokenize line to preserve structural whitespace
     const tokens = line.split(/(\s+|=|\(|\)|\{|\}|;|,|<|>|::)/);

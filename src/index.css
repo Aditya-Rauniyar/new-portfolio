@@ -457,3 +457,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 16px 12px;
   }
 }
+
+/* Premium Project Card Hover Effects */
+.project-visual-card:hover .project-card-image {
+  transform: scale(1.05);
+}
