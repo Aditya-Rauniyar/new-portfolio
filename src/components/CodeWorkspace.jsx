@@ -6,16 +6,19 @@ export default function CodeWorkspace() {
 
   const files = [
     { id: 'sehatvani', name: 'SehatVani.jsx', type: 'jsx', icon: <FileCode size={14} className="neon-text-mint" /> },
-    { id: 'bipartitelink', name: 'BipartiteLink.cpp', type: 'cpp', icon: <FileCode size={14} className="neon-text-cyan" /> },
-    { id: 'svic', name: 'svic_portal.config.json', type: 'json', icon: <FileCode size={14} style={{ color: '#f59e0b' }} /> },
-    { id: 'naari', name: 'NaariSafety.jsx', type: 'jsx', icon: <FileCode size={14} className="neon-text-purple" /> },
+    { id: 'civicspark', name: 'CivicSpark.jsx', type: 'jsx', icon: <FileCode size={14} className="neon-text-cyan" /> },
+    { id: 'dronaai', name: 'DronaAi.jsx', type: 'jsx', icon: <FileCode size={14} className="neon-text-purple" /> },
+    { id: 'eduadi', name: 'EduAdi.jsx', type: 'jsx', icon: <FileCode size={14} className="neon-text-mint" /> },
+    { id: 'footprint', name: 'FootPrint.jsx', type: 'jsx', icon: <FileCode size={14} className="neon-text-cyan" /> },
+    { id: 'weatherapp', name: 'WeatherApp.js', type: 'js', icon: <FileCode size={14} style={{ color: '#f59e0b' }} /> },
+    { id: 'svic', name: 'svic_portal.config.json', type: 'json', icon: <FileCode size={14} style={{ color: '#e2e8f0' }} /> },
     { id: 'blogapp', name: 'BlogApp.js', type: 'js', icon: <FileCode size={14} className="neon-text-mint" /> }
   ];
 
   const codeContents = {
     sehatvani: {
       title: 'SehatVani',
-      sub: 'Blood Report Multi-lingual Summarizer (Full Stack)',
+      sub: 'Blood Report Multi-lingual Summarizer (MERN Stack)',
       path: 'src/components/report/ReportSummarizer.jsx',
       code: `// SehatVani Report Summarizer - Multilingual Translation
 import React, { useState } from 'react';
@@ -56,90 +59,173 @@ export default function ReportSummarizer({ metricsData }) {
         'Built with responsive Tailwind panels for mobile-friendly clinic visits.'
       ]
     },
-    bipartitelink: {
-      title: 'BipartiteLink',
-      sub: 'Peer-to-Peer Skill Matchmaking (C++ Core Simulation)',
-      path: 'core/matchmaker/BipartiteLink.cpp',
-      code: `// BipartiteLink Core Complementary Matchmaking Algorithm
-#include <iostream>
-#include <vector>
-#include <string>
-#include <unordered_map>
+    civicspark: {
+      title: 'CivicSpark',
+      sub: 'Social & Civic Campaign Management Platform',
+      path: 'src/components/civic/CampaignHub.jsx',
+      code: `// CivicSpark Social Campaigns Platform - Evidence Validator Node
+import React, { useState } from 'react';
 
-struct User {
-    std::string id;
-    std::vector<std::string> skillsToTeach;
-    std::vector<std::string> skillsToLearn;
-};
+export default function EvidenceValidator({ campaignId }) {
+  const [isValidating, setIsValidating] = useState(false);
+  const [validationResult, setValidationResult] = useState(null);
 
-class BipartiteLinker {
-public:
-    std::vector<std::pair<std::string, std::string>> findOptimalMatches(
-        const std::vector<User>& users
-    ) {
-        std::vector<std::pair<std::string, std::string>> matches;
-        // Search complementary bipartite intersections
-        for (size_t i = 0; i < users.size(); ++i) {
-            for (size_t j = i + 1; j < users.size(); ++j) {
-                if (hasComplementarySkill(users[i], users[j])) {
-                    matches.push_back({users[i].id, users[j].id});
-                }
-            }
-        }
-        return matches;
+  const validateCampaignEvidence = async (evidenceUrl) => {
+    setIsValidating(true);
+    try {
+      const res = await fetch('/api/v1/campaigns/validate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ campaignId, evidenceUrl })
+      });
+      const data = await res.json();
+      setValidationResult(data.status);
+    } catch (err) {
+      console.error("Civic validation failed:", err);
+    } finally {
+      setIsValidating(false);
     }
-};`,
-      overview: 'A bipartite graph complementary search engine built to instantly match study partners who possess teaching skills that overlap with the learning needs of others.',
-      tech: ['C++', 'Bipartite Matching', 'Adjacency lists', 'STL Vectors'],
-      metrics: [
-        'Optimized bipartite graph lookup mapping algorithms.',
-        'Structured with custom clean hash maps to reduce lookups to near O(N) in typical loads.',
-        'Integrated as the core engine in a Node.js full-stack exchange server.'
-      ]
-    },
-    naari: {
-      title: 'NAARI',
-      sub: 'Women Security & Emergency Response Platform',
-      path: 'src/components/safety/NaariEmergency.jsx',
-      code: `// NAARI Emergency Response System - Location Polling Node
-import React, { useEffect, useState } from 'react';
-import io from 'socket.io-client';
-
-export default function NaariEmergency({ userId }) {
-  const [coords, setCoords] = useState(null);
-  const [socket, setSocket] = useState(null);
-
-  useEffect(() => {
-    const socketConn = io('https://api.naarisafety.org');
-    setSocket(socketConn);
-    
-    // Begin high-precision geolocation updates
-    navigator.geolocation.watchPosition((pos) => {
-      const payload = {
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude,
-        timestamp: Date.now()
-      };
-      setCoords(payload);
-      socketConn.emit('update_coordinates', { userId, payload });
-    }, (err) => console.error(err), { enableHighAccuracy: true });
-
-    return () => socketConn.disconnect();
-  }, [userId]);
+  };
 
   return (
-    <div className="safety-node">
-      <h3>Active Tracking Node</h3>
-      {coords && <p>LAT: {coords.lat} | LNG: {coords.lng}</p>}
+    <div className="evidence-panel">
+      <h4>Campaign Validation Node</h4>
+      <button onClick={() => validateCampaignEvidence('https://proof.org/doc')}>Validate Campaign</button>
+      {validationResult && <p>STATUS: {validationResult}</p>}
     </div>
   );
 }`,
-      overview: 'A dedicated emergency response web app featuring high-precision coordinate polling, automated WhatsApp/SMS emergency alerts, and a real-time tracking dashboard.',
-      tech: ['React Native', 'Socket.io', 'Node.js', 'Google Maps API', 'Twilio'],
+      overview: 'The Civic Platform is a full-stack web application that empowers individuals and organizations to create, manage, and support campaigns for social, environmental, and civic causes. With integrated AI, NGO networking, and evidence validation, it transforms civic ideas into actionable movements.',
+      tech: ['React.js', 'Vite', 'Tailwind CSS', 'JavaScript'],
       metrics: [
-        '98% location polling accuracy under extreme network conditions.',
-        'Fully responsive emergency UI with integrated one-click hardware button hooks.',
-        'Socket-based live dashboard updating coordinates at a stable 180ms latency.'
+        'Shipped responsive campaigns dashboard and social campaign creators.',
+        'Reduced component redundancy by 40% using a shared team-wide UI library.',
+        'Accelerated deployment pipelines through Git branch reviews and validations.'
+      ]
+    },
+    dronaai: {
+      title: 'DronaAi',
+      sub: 'MERN Real-Time Peer-to-Peer EdTech Lobbies',
+      path: 'src/components/study/DronaLobby.jsx',
+      code: `// DronaAi Peer-to-Peer Study Lobby Node with Socket.io
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
+
+export default function DronaLobby({ lobbyId, userId }) {
+  const [socket, setSocket] = useState(null);
+  const [activeUsers, setActiveUsers] = useState([]);
+
+  useEffect(() => {
+    const socketConn = io('https://api.dronaai.org');
+    setSocket(socketConn);
+
+    socketConn.emit('join_lobby', { lobbyId, userId });
+    socketConn.on('lobby_update', (users) => setActiveUsers(users));
+
+    return () => socketConn.disconnect();
+  }, [lobbyId, userId]);
+
+  return (
+    <div className="drona-study-lobby">
+      <h3>DronaAi Workspace Lobby: {lobbyId}</h3>
+      <p>Collaborators: {activeUsers.length}</p>
+    </div>
+  );
+}`,
+      overview: 'A real-time peer-to-peer educational platform featuring direct chat connections, study lobbies, Gemini API integrations, and collaborative study spaces with Socket.io.',
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'Gemini API'],
+      metrics: [
+        'Dynamic study spaces enabling multiple users to share visual notes and collaborate.',
+        'Gemini API automation generating study flashcards and summaries from reports.',
+        'Direct study lobby connections configured with near-zero latency.'
+      ]
+    },
+    eduadi: {
+      title: 'EduAdi',
+      sub: 'MERN Classroom & Lecture Hub Coordinator',
+      path: 'src/components/edu/EduHub.jsx',
+      code: `// EduAdi MERN Classroom Manager - Syllabus Loader
+import React, { useState } from 'react';
+
+export default function EduHub({ courseId }) {
+  const [syllabus, setSyllabus] = useState([]);
+  
+  const loadClassroomSyllabus = async () => {
+    const res = await fetch(\`/api/v1/edu/\${courseId}/syllabus\`);
+    const data = await res.json();
+    setSyllabus(data.chapters);
+  };
+
+  return (
+    <div className="edu-classroom">
+      <h3>EduAdi Classroom Hub</h3>
+      <button onClick={loadClassroomSyllabus}>Decrypt Syllabus</button>
+    </div>
+  );
+}`,
+      overview: 'A classroom management and course hub platform built on the MERN stack to enable students and teachers to share course content and collaborate.',
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+      metrics: [
+        'Secure multi-tier role validations (Teacher, Student, Admin).',
+        'Built with quick indexing schema to fetch student metrics under 120ms.',
+        'High-contrast UI designed for responsive tablet and classroom displays.'
+      ]
+    },
+    footprint: {
+      title: 'FootPrint',
+      sub: 'Personal Environmental Carbon Calculator',
+      path: 'src/components/eco/CarbonFootprint.jsx',
+      code: `// Foot_Print Carbon Footprint Tracking Node
+import React, { useState } from 'react';
+
+export default function CarbonFootprint() {
+  const [footprint, setFootprint] = useState(0);
+
+  const calculateImpact = (miles, energy) => {
+    const impact = (miles * 0.404) + (energy * 0.92);
+    setFootprint(impact);
+  };
+
+  return (
+    <div className="eco-calculator">
+      <h3>Foot_Print Tracking Node</h3>
+      <p>CURRENT CARBON OUTPUT: {footprint} kg CO2</p>
+    </div>
+  );
+}`,
+      overview: 'An environmental tracking calculator designed to compute personal carbon impacts, analyze energy consumption variables, and offer actionable green solutions.',
+      tech: ['React.js', 'Tailwind CSS', 'JavaScript'],
+      metrics: [
+        'Instant energy algorithm tracking carbon factors.',
+        'Clean responsive charts plotting monthly carbon reductions.',
+        'Lightweight static site built for mobile visits.'
+      ]
+    },
+    weatherapp: {
+      title: 'WeatherApp',
+      sub: 'Meteorological Forecast Dashboard',
+      path: 'src/components/weather/WeatherDashboard.js',
+      code: `// WeatherApp Meteorology Dashboard - Forecast Fetcher
+const fetchWeatherForecast = async (city) => {
+  const API_KEY = "6064d7df6db8220f86221c0ad19a71db";
+  try {
+    const res = await fetch(\`https://api.openweathermap.org/data/2.5/weather?q=\${city}&appid=\${API_KEY}\`);
+    const data = await res.json();
+    return {
+      temp: Math.round(data.main.temp - 273.15),
+      wind: data.wind.speed,
+      humidity: data.main.humidity
+    };
+  } catch (err) {
+    console.error("Weather uplink offline:", err);
+  }
+};`,
+      overview: 'A real-time weather forecasting dashboard providing real-time meteorological metrics, forecasts, dynamic wind gauges, and ambient temperatures.',
+      tech: ['JavaScript', 'HTML5', 'CSS3', 'OpenWeather API'],
+      metrics: [
+        'Fully responsive meteorological gauges optimized for all screens.',
+        'Monospace temperature readings and wind dials.',
+        'Zero external heavy libraries, achieving a 99/100 Lighthouse performance.'
       ]
     },
     svic: {
@@ -153,27 +239,24 @@ export default function NaariEmergency({ userId }) {
   "fields": [
     {
       "name": "noticeTitle",
-      "title": "Bulletin Notice Title",
       "type": "string"
     },
     {
       "name": "publishDate",
-      "title": "Publishing Date",
       "type": "datetime"
     },
     {
       "name": "attachmentPdf",
-      "title": "Official Announcement PDF Link",
       "type": "file"
     }
   ]
 }`,
-      overview: 'A production website built for a real intermediate college in Uttar Pradesh. Features an active headless CMS backend, allowing administrative staff to post bulletins in real-time.',
+      overview: 'A production website built for a real intermediate college in Uttar Pradesh. Features an active headless CMS notice board and event logs allowing admin updates without code modifications.',
       tech: ['React.js', 'Sanity.io CMS', 'TailwindCSS', 'WebP Compressors'],
       metrics: [
         'Fully responsive school landing with integrated student notice boards.',
-        'Optimized images with lossless WebP compression, leading to a 35% reduction in initial paint delay.',
-        'Hosted live at svic.co.in with active user interactions.'
+        'Lossless WebP image compressors reducing page paint delay by 35%.',
+        'Deployed live at svic.co.in with active user interactions.'
       ]
     },
     blogapp: {
@@ -185,7 +268,6 @@ const express = require('express');
 const router = express.Router();
 const BlogPost = require('../models/BlogPost');
 
-// CREATE: Write new blog log
 router.post('/posts/new', async (req, res) => {
   const { title, content, author } = req.body;
   try {
@@ -195,12 +277,6 @@ router.post('/posts/new', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-});
-
-// READ: Fetch all logs
-router.get('/posts', async (req, res) => {
-  const posts = await BlogPost.find().sort({ createdAt: -1 });
-  res.render('blogList', { posts });
 });`,
       overview: 'A robust, lightweight backend server built to handle full CRUD operations, database queries, and server-side EJS view rendering templates.',
       tech: ['Node.js', 'Express.js', 'MongoDB', 'EJS Templates'],

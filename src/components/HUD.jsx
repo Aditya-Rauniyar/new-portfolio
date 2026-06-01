@@ -42,39 +42,41 @@ export default function HUD({ activeTab, setActiveTab }) {
           { text: '  projects       - Load complete portfolio project log database.', type: 'info' },
           { text: '  about          - Load subject academics, GATE 2026, & achievements.', type: 'info' },
           { text: '  matrix         - Real-time solved difficulty percentages bar-charts.', type: 'info' },
-          { text: '  naari          - Query NAARI emergency response system parameters.', type: 'info' },
           { text: '  clear          - Flush console shell buffer.', type: 'info' },
           { text: 'Project specific diagnostics:', type: 'success' },
           { text: '  sehatvani      - Diagnostics for clinical report translator.', type: 'info' },
-          { text: '  bipartitelink  - Vector map of C++ bipartite skill matching.', type: 'info' },
+          { text: '  civicspark     - Campaign parameters for Civic Platform hub.', type: 'info' },
+          { text: '  dronaai        - Socket tracking node for peer-to-peer lobby.', type: 'info' },
           { text: '  svic           - Compression notice for educational portal.', type: 'info' }
         );
         break;
       case 'skills':
         updatedHistory.push(
           { text: '[SKILL CHECKSUM LOADED SUCCESSFULLY]', type: 'success' },
-          { text: '• LANGUAGES & CONCEPTS: C++ Expert (DSA Specialist), JavaScript (ES6+), SQL compilers, HTML5/CSS3. Core CS: OOPs, DBMS structures, and multi-threaded Operating Systems (OS).', type: 'info' },
-          { text: '• FRAMEWORKS & STORES: React.js hooks & state management, custom context, Redux state storage, Bootstrap, responsive CSS grids, Node.js servers, Express.js REST APIs, MongoDB databases, Sanity.io CMS.', type: 'info' },
-          { text: '• CS MAJORS: Bipartite network graphs, Dynamic Programming (DP), Greedy search, secure JWT encryption protocols.', type: 'info' }
+          { text: '• LANGUAGES & CONCEPTS: C++ (DSA Specialist), JavaScript (ES6+), HTML5/CSS3, SQL, Python. Core: OOPs, DBMS structures, and Operating Systems.', type: 'info' },
+          { text: '• FRAMEWORKS & STORES: React.js hooks & custom context, Vite, Redux state storage, Node.js servers, Express.js REST APIs, NoSQL MongoDB, Sanity headless CMS, Tailwind CSS.', type: 'info' },
+          { text: '• CS UTILITIES: Version Control (Git/GitHub), Postman API, JWT encryption, Socket.io, Gemini AI API.', type: 'info' }
         );
         break;
       case 'projects':
         updatedHistory.push(
           { text: '[PROJECT ARCHITECTURE RESOLVED]', type: 'success' },
-          { text: '1. SehatVani (AI Medical Summarizer): Multi-lingual translator (English/Hindi) parsing blood metrics via Express nodes.', type: 'info' },
-          { text: '2. BipartiteLink (C++ Matching Engine): Pairs complementary skilled users using bipartite graph intersections.', type: 'info' },
-          { text: '3. SVIC Portal (svic.co.in): Deployed school portal utilizing Sanity.io headless CMS with WebP compression pipelines.', type: 'info' },
-          { text: '4. NAARI (Women Safety Platform): Real-time geolocation tracking with Socket.io alerts & automated Twilio triggers.', type: 'info' },
-          { text: '5. Blog App (Express CRUD): Indexed MongoDB collection controller querying backend EJS views.', type: 'info' },
-          { text: 'Type a project name (e.g., "naari", "sehatvani", "bipartitelink", "svic") for deep diagnostics.', type: 'success' }
+          { text: '1. SehatVani (AI Medical Summarizer): Multi-lingual translator (English/Hindi) parsing blood metrics via Express/MongoDB [MERN]. Deployed: https://sehat-vani.vercel.app', type: 'info' },
+          { text: '2. CivicSpark (Civic Campaign Platform): Full-stack campaigns hub with integrated AI, NGO networking, and PR review validation.', type: 'info' },
+          { text: '3. DronaAi (Real-time P2P EdTech): Study lobbies with Socket.io visual notes & automatic Gemini API flashcard generation [MERN].', type: 'info' },
+          { text: '4. EduAdi (Classroom Hub): Classroom manager and course dashboard [MERN].', type: 'info' },
+          { text: '5. Foot_Print (Carbon Calculator): Environment carbon footprints tracking node.', type: 'info' },
+          { text: '6. WeatherApp (Forecast Dashboard): Atmospheric real-time meteorological metrics API.', type: 'info' },
+          { text: '7. SVIC Portal (svic.co.in): Deployed school portal utilizing Sanity headless CMS notices and WebP caches. Deployed: https://svic.co.in', type: 'info' },
+          { text: 'Type a project name (e.g., "sehatvani", "civicspark", "dronaai", "svic") for deep diagnostics.', type: 'success' }
         );
         break;
       case 'about':
         updatedHistory.push(
           { text: '[SUBJECT PROFILE ACQUIRED]', type: 'success' },
           { text: '• SUBJECT: Aditya Rauniyar, CSE undergrad at KIET Group of Institutions (AKTU) Delhi-NCR (SGPA: 8.30/10).', type: 'info' },
-          { text: '• NATION GATE: Qualified GATE 2026 IT/CS examination in Computer Science fundamentals.', type: 'info' },
-          { text: '• DATA METRICS: 600+ DSA solves (350+ LeetCode, GeeksForGeeks, CodeChef 1500+ active rating).', type: 'info' },
+          { text: '• NATION GATE: Qualified GATE 2026 CS/IT examination in Computer Science fundamentals.', type: 'info' },
+          { text: '• DATA METRICS: 450+ DSA solves (LeetCode peak rating 1754, GeeksForGeeks, CodeChef).', type: 'info' },
           { text: '• HACKATHONS: Deployed Top 4 major project at SprintHacks 3.0; National Finalist in IEEE SSH Hackathon.', type: 'info' }
         );
         break;
@@ -87,30 +89,29 @@ export default function HUD({ activeTab, setActiveTab }) {
           { text: '  TOTAL:  481 (Vite real-time API sync active)', type: 'success' }
         );
         break;
-      case 'naari':
+      case 'dronaai':
         updatedHistory.push(
-          { text: '[QUERY: NAARI EMERGENCY RESPONSE PLATFORM]', type: 'success' },
-          { text: '• BACKEND CHANNELS: Socket.io real-time polling nodes.', type: 'info' },
-          { text: '• LATENCY CHECK: 180ms location telemetry update interval.', type: 'info' },
-          { text: '• SECURITY ENCRYPT: AES-256 coordinates envelope encryption.', type: 'info' },
-          { text: '• ALERTS: Twilio emergency voice and WhatsApp payload triggers.', type: 'info' }
+          { text: '[QUERY: DRONAAI MERN P2P EDTECH PLATFORM]', type: 'success' },
+          { text: '• STUDYSPECIAL: Dynamic Socket.io study spaces for collaborative visual note sharing.', type: 'info' },
+          { text: '• CORE AI: Gemini API auto-generation node for summary flashcards.', type: 'info' },
+          { text: '• CHAT SOCKET: Live peer study lobby direct connections.', type: 'info' },
+          { text: '• DB SCHEMA: MongoDB collection indexes mapped for fast user routing.', type: 'info' }
         );
         break;
       case 'sehatvani':
         updatedHistory.push(
           { text: '[QUERY: SEHATVANI AI MEDICAL SUMMARIZER]', type: 'success' },
-          { text: '• ARCHITECTURE: Model-View-Controller (MVC) API routers.', type: 'info' },
+          { text: '• URL DEPLOY: https://sehat-vani.vercel.app', type: 'success' },
           { text: '• DICTIONARIES: 120+ clinical parameter ranges mapped.', type: 'info' },
           { text: '• TRANSLATION: High-performance natural language summaries in Hindi and English.', type: 'info' }
         );
         break;
-      case 'bipartitelink':
+      case 'civicspark':
         updatedHistory.push(
-          { text: '[QUERY: BIPARTITELINK C++ MATCHING ENGINE]', type: 'success' },
-          { text: '• ALGORITHM: Disjoint Bipartite graph complementary matching.', type: 'info' },
-          { text: '• MONOSPACE GRAPH RENDERING:', type: 'success' },
-          { text: '    [User: Learner] ──(T3/T4 learn)──> [Adjacency Nodes] ──(teach)──> [User: Teacher]', type: 'info' },
-          { text: '• COMPUTATION: Near-instant O(N) lookup time utilizing custom index hashes.', type: 'info' }
+          { text: '[QUERY: CIVICSPARK CIVIC PLATFORM CAMPAIGNS]', type: 'success' },
+          { text: '• DESCRIPTION: Web app empowering campaigns for civic, environmental, and social causes.', type: 'info' },
+          { text: '• MODULES: Integrated AI validation, NGO network connections, and evidence proof registries.', type: 'info' },
+          { text: '• REDUNDANCY: Shipped reusable UI library decreasing component duplication by 40%.', type: 'info' }
         );
         break;
       case 'svic':

@@ -47,7 +47,7 @@ export default function App() {
   const [typedText, setTypedText] = useState('');
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
 
-  // Union of premium projects data
+  // Union of actual portfolio projects data from GitHub
   const visualProjects = [
     {
       id: 'sehatvani',
@@ -55,49 +55,69 @@ export default function App() {
       sub: 'AI Medical Translation & Report Summarizer',
       desc: 'An AI-powered clinical translation platform converting complex laboratory test parameters (T3, T4, Hemoglobin) into simplified, natural language explanations in Hindi and English. Integrates secure JWT authentication and custom Express REST API endpoints.',
       img: sehatvaniMockup,
-      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'AI API'],
-      live: 'https://github.com/Aditya-Rauniyar',
-      metrics: 'Uplink: SECURE | Latency: 120ms | Security: JWT Router'
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT Auth'],
+      live: 'https://sehat-vani.vercel.app',
+      metrics: 'MERN Stack | Langs: Hindi / English | Deployed: Live'
     },
     {
-      id: 'bipartitelink',
-      title: 'BipartiteLink',
-      sub: 'C++ Peer-to-Peer Matchmaking Engine',
-      desc: 'A futuristic peer-to-peer matchmaking system built on discrete bipartite graph complementary search logic. Instantly matches study partners who possess teaching skills that overlap with the learning needs of others.',
+      id: 'civicspark',
+      title: 'CivicSpark',
+      sub: 'Social & Civic Campaign Management Platform',
+      desc: 'The Civic Platform is a full-stack web application that empowers individuals and organizations to create, manage, and support campaigns for social, environmental, and civic causes. With integrated AI, NGO networking, and evidence validation, it transforms civic ideas into actionable movements.',
+      img: svicPortalMockup,
+      tech: ['React.js', 'Vite', 'Tailwind CSS', 'JavaScript'],
+      live: 'https://github.com/Aditya-Rauniyar/Civics-Spark',
+      metrics: 'AI Campaigns | Redundancy: -40% | Integration: Git'
+    },
+    {
+      id: 'dronaai',
+      title: 'DronaAi',
+      sub: 'MERN Real-Time Peer-to-Peer EdTech Lobbies',
+      desc: 'A real-time peer-to-peer educational platform featuring direct chat connections, study lobbies, Gemini API integrations, and collaborative study spaces with Socket.io.',
       img: bipartitelinkMockup,
-      tech: ['C++', 'Bipartite Graphs', 'Adjacency Lists', 'STL Vectors'],
-      live: 'https://github.com/Aditya-Rauniyar',
-      metrics: 'Complexity: O(N) | Index Hash: Custom | Uptime: 100%'
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'Gemini API'],
+      live: 'https://github.com/Aditya-Rauniyar/DronaAi',
+      metrics: 'MERN Socket | Live Chat Lobbies | AI: Gemini API'
+    },
+    {
+      id: 'eduadi',
+      title: 'EduAdi',
+      sub: 'MERN Classroom & Lecture Hub Coordinator',
+      desc: 'A classroom management and course hub platform built on the MERN stack to enable students and teachers to share course content and collaborate.',
+      img: naariSafetyMockup,
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+      live: 'https://github.com/Aditya-Rauniyar/EduAdi',
+      metrics: 'MERN Hub | Validation: Role-based | Load Index: <120ms'
+    },
+    {
+      id: 'footprint',
+      title: 'FootPrint',
+      sub: 'Personal Environmental Carbon Calculator',
+      desc: 'An environmental tracking calculator designed to compute personal carbon impacts, analyze energy consumption variables, and offer actionable green solutions.',
+      img: null,
+      tech: ['React.js', 'Tailwind CSS', 'JavaScript'],
+      live: 'https://github.com/Aditya-Rauniyar/Foot_Print',
+      metrics: 'Eco Telemetry | Framework: React | Uptime: 100%'
+    },
+    {
+      id: 'weatherapp',
+      title: 'WeatherApp',
+      sub: 'Meteorological Forecast Dashboard',
+      desc: 'A real-time weather forecasting dashboard providing real-time meteorological metrics, forecasts, dynamic wind gauges, and ambient temperatures.',
+      img: null,
+      tech: ['JavaScript', 'HTML5', 'CSS3', 'OpenWeather API'],
+      live: 'https://github.com/Aditya-Rauniyar/WeatherApp',
+      metrics: 'meteorology | OpenWeather API | Lighthouse: 99/100'
     },
     {
       id: 'svic',
       title: 'SVIC School Portal',
       sub: 'Freelance College Notice Board & CMS',
-      desc: 'A production website built for Swami Vivekanand Intermediate College in Uttar Pradesh. Features integrated student notice boards and timetables driven by a headless Sanity.io CMS. Reduced initial paint delay by 35% using multi-threaded WebP conversions.',
+      desc: 'A production website built for Swami Vivekanand Intermediate College in Uttar Pradesh. Features integrated student notice boards and timetables driven by a headless Sanity.io CMS. Reduced paint delay by 35% using multi-threaded WebP conversions.',
       img: svicPortalMockup,
-      tech: ['React.js', 'Sanity.io', 'TailwindCSS', 'WebP Optimizer'],
+      tech: ['React.js', 'Sanity.io', 'Tailwind CSS', 'WebP Optimizer'],
       live: 'https://svic.co.in',
-      metrics: 'SEO Uptime: 100% | Paint Delay: -35% | Status: Deployed'
-    },
-    {
-      id: 'naari',
-      title: 'NAARI Safety Platform',
-      sub: 'Women Security & Geolocation SOS Alerts',
-      desc: 'An emergency rescue web platform featuring real-time location coordinate tracking, WebSockets emergency polling, and automated Twilio voice call and WhatsApp notification triggers for women safety.',
-      img: naariSafetyMockup,
-      tech: ['React Native', 'Socket.io', 'Node.js', 'Google Maps API', 'Twilio'],
-      live: 'https://github.com/Aditya-Rauniyar',
-      metrics: 'Accuracy: 98% | WS Latency: 180ms | Encrypt: AES-256'
-    },
-    {
-      id: 'blogapp',
-      title: 'Blog CRUD Engine',
-      sub: 'Backend REST API & MVC Router',
-      desc: 'A high-performance backend EJS template blogging platform, deploying MVC controllers to query indexed MongoDB collection arrays in near-constant search times. Supports markdown formatting and complete session logins.',
-      img: null, // Custom cyber-terminal style gradient will be rendered
-      tech: ['Node.js', 'Express.js', 'MongoDB', 'EJS Views', 'MVC Pattern'],
-      live: 'https://github.com/Aditya-Rauniyar',
-      metrics: 'Controller: MVC | Uptime: 99.9% | Schema: MongoDB Index'
+      metrics: 'Uptime: 100% | Paint Delay: -35% | Status: Deployed'
     }
   ];
 
@@ -400,13 +420,15 @@ export default function App() {
                           className="project-card-image"
                         />
                       ) : (
-                        /* Beautiful Cyber router visual node mockup for Blog App */
-                        <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, rgba(4, 7, 19, 0.95) 0%, rgba(139, 92, 246, 0.15) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+                        /* Beautiful Cyber router visual node mockup for projects without screenshots */
+                        <div style={{ width: '100%', height: '100%', background: project.id === 'footprint' ? 'linear-gradient(135deg, rgba(4, 7, 19, 0.95) 0%, rgba(16, 185, 129, 0.15) 100%)' : 'linear-gradient(135deg, rgba(4, 7, 19, 0.95) 0%, rgba(14, 165, 233, 0.15) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                           <div className="laser-grid"><div className="laser-line"></div></div>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.08)', border: '1px solid rgba(139, 92, 246, 0.2)', boxShadow: '0 0 15px rgba(139, 92, 246, 0.1)' }}>
-                            <Code size={26} className="neon-text-purple" style={{ animation: 'spin 16s linear infinite' }} />
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.02)', border: project.id === 'footprint' ? '1px solid rgba(16, 185, 129, 0.2)' : '1px solid rgba(14, 165, 233, 0.2)', boxShadow: '0 0 15px rgba(255, 255, 255, 0.02)' }}>
+                            <Code size={26} className={project.id === 'footprint' ? "neon-text-mint" : "neon-text-cyan"} style={{ animation: 'spin 16s linear infinite' }} />
                           </div>
-                          <span className="text-mono" style={{ fontSize: '0.6rem', color: 'var(--accent-purple)', marginTop: '10px', letterSpacing: '0.15em', fontWeight: 'bold' }}>[ BACKEND_CRUD_MVC ]</span>
+                          <span className="text-mono" style={{ fontSize: '0.6rem', color: project.id === 'footprint' ? 'var(--accent-mint)' : 'var(--accent-cyan)', marginTop: '10px', letterSpacing: '0.15em', fontWeight: 'bold' }}>
+                            {project.id === 'footprint' ? '[ ECO_CARBON_TRACKER ]' : '[ METEOROLOGY_METRICS ]'}
+                          </span>
                         </div>
                       )}
                       
