@@ -61,14 +61,15 @@ export default function HUD({ activeTab, setActiveTab }) {
       case 'projects':
         updatedHistory.push(
           { text: '[PROJECT ARCHITECTURE RESOLVED]', type: 'success' },
-          { text: '1. SehatVani (AI Medical Summarizer): Multi-lingual translator (English/Hindi) parsing blood metrics via Express/MongoDB [MERN]. Deployed: https://sehat-vani.vercel.app', type: 'info' },
-          { text: '2. CivicSpark (Civic Campaign Platform): Full-stack campaigns hub with integrated AI, NGO networking, and PR review validation.', type: 'info' },
-          { text: '3. DronaAi (Real-time P2P EdTech): Study lobbies with Socket.io visual notes & automatic Gemini API flashcard generation [MERN].', type: 'info' },
-          { text: '4. EduAdi (Classroom Hub): Classroom manager and course dashboard [MERN].', type: 'info' },
-          { text: '5. Foot_Print (Carbon Calculator): Environment carbon footprints tracking node.', type: 'info' },
-          { text: '6. WeatherApp (Forecast Dashboard): Atmospheric real-time meteorological metrics API.', type: 'info' },
-          { text: '7. SVIC Portal (svic.co.in): Deployed school portal utilizing Sanity headless CMS notices and WebP caches. Deployed: https://svic.co.in', type: 'info' },
-          { text: 'Type a project name (e.g., "sehatvani", "civicspark", "dronaai", "svic") for deep diagnostics.', type: 'success' }
+          { text: '1. SVIC School Portal: Freelance College Notice Board & CMS. Live: https://svic.co.in', type: 'info' },
+          { text: '2. SehatVani: AI Clinical Report Translator (English/Hindi) [MERN]. Live: https://sehat-vani.vercel.app', type: 'info' },
+          { text: '3. CodeRoom: Real-time Collaborative Code Workspace [Socket.io/Monaco]. GitHub: https://github.com/Aditya-Rauniyar/CodeRoom', type: 'info' },
+          { text: '4. CivicSpark: Civic Campaign Platform with Integrated AI & NGO Networking. GitHub: https://github.com/Aditya-Rauniyar/Civics-Spark', type: 'info' },
+          { text: '5. EduAdi: 1st Year EdTech Learning UI Platform. Live: https://aditya-rauniyar.github.io/EduAdi/', type: 'info' },
+          { text: '6. DronaAi: Real-time P2P EdTech Lobbies & Gemini Flashcards [MERN]. GitHub: https://github.com/Aditya-Rauniyar/DronaAi', type: 'info' },
+          { text: '7. FootPrint: Environmental Carbon Footprint Calculator. GitHub: https://github.com/Aditya-Rauniyar/Foot_Print', type: 'info' },
+          { text: '8. WeatherApp: Real-time Meteorological Forecast Dashboard. Live: https://aditya-rauniyar.github.io/WeatherApp/', type: 'info' },
+          { text: 'Type a project name (e.g., "svic", "sehatvani", "coderoom", "civicspark", "eduadi", "dronaai", "footprint", "weatherapp") for deep diagnostics.', type: 'success' }
         );
         break;
       case 'about':
@@ -76,50 +77,79 @@ export default function HUD({ activeTab, setActiveTab }) {
           { text: '[SUBJECT PROFILE ACQUIRED]', type: 'success' },
           { text: '• SUBJECT: Aditya Rauniyar, CSE undergrad at KIET Group of Institutions (AKTU) Delhi-NCR (SGPA: 8.30/10).', type: 'info' },
           { text: '• NATION GATE: Qualified GATE 2026 CS/IT examination in Computer Science fundamentals.', type: 'info' },
-          { text: '• DATA METRICS: 450+ DSA solves (LeetCode peak rating 1754, GeeksForGeeks, CodeChef).', type: 'info' },
+          { text: '• DATA METRICS: 600+ DSA solves (LeetCode, GeeksForGeeks, CodeChef).', type: 'info' },
           { text: '• HACKATHONS: Deployed Top 4 major project at SprintHacks 3.0; National Finalist in IEEE SSH Hackathon.', type: 'info' }
         );
         break;
       case 'matrix':
         updatedHistory.push(
           { text: '[SOLVED DIFFICULTY MATRIX COUNTS]', type: 'success' },
-          { text: '  EASY:   [█████████████░░░░░░░░░] 42% (201 Solved)', type: 'info' },
-          { text: '  MEDIUM: [████████████████░░░░░░] 52% (252 Solved)', type: 'info' },
-          { text: '  HARD:   [██░░░░░░░░░░░░░░░░░░░░]  6% (28 Solved)', type: 'info' },
-          { text: '  TOTAL:  481 (Vite real-time API sync active)', type: 'success' }
+          { text: '  EASY:   [█████████████░░░░░░░░░] 40% (207 Solved)', type: 'info' },
+          { text: '  MEDIUM: [████████████████░░░░░░] 52% (269 Solved)', type: 'info' },
+          { text: '  HARD:   [███░░░░░░░░░░░░░░░░░░░]  8% (37 Solved)', type: 'info' },
+          { text: '  TOTAL:  513 LeetCode Solved (763+ Overall across DSA Platforms)', type: 'success' }
         );
         break;
-      case 'dronaai':
+      case 'svic':
         updatedHistory.push(
-          { text: '[QUERY: DRONAAI MERN P2P EDTECH PLATFORM]', type: 'success' },
-          { text: '• STUDYSPECIAL: Dynamic Socket.io study spaces for collaborative visual note sharing.', type: 'info' },
-          { text: '• CORE AI: Gemini API auto-generation node for summary flashcards.', type: 'info' },
-          { text: '• CHAT SOCKET: Live peer study lobby direct connections.', type: 'info' },
-          { text: '• DB SCHEMA: MongoDB collection indexes mapped for fast user routing.', type: 'info' }
+          { text: '[QUERY: SVIC SCHOOL PORTAL]', type: 'success' },
+          { text: '• URL DEPLOY: https://svic.co.in', type: 'success' },
+          { text: '• MEDIA COMPRESSION: Multi-threaded WebP lossless converter integration.', type: 'info' },
+          { text: '• SPEED GAIN: 35% paint delay decrease via notice-board caching pipelines.', type: 'info' }
         );
         break;
       case 'sehatvani':
         updatedHistory.push(
           { text: '[QUERY: SEHATVANI AI MEDICAL SUMMARIZER]', type: 'success' },
           { text: '• URL DEPLOY: https://sehat-vani.vercel.app', type: 'success' },
-          { text: '• DICTIONARIES: 120+ clinical parameter ranges mapped.', type: 'info' },
+          { text: '• GITHUB: https://github.com/Aditya-Rauniyar/sehatvani', type: 'info' },
           { text: '• TRANSLATION: High-performance natural language summaries in Hindi and English.', type: 'info' }
+        );
+        break;
+      case 'coderoom':
+        updatedHistory.push(
+          { text: '[QUERY: CODEROOM COLLABORATIVE WORKSPACE]', type: 'success' },
+          { text: '• GITHUB: https://github.com/Aditya-Rauniyar/CodeRoom', type: 'success' },
+          { text: '• SOCKET.IO: Real-time room synchronizations for instant multi-user editing.', type: 'info' },
+          { text: '• COMPILER: Monaco Editor integration with custom execution highlighters.', type: 'info' }
         );
         break;
       case 'civicspark':
         updatedHistory.push(
           { text: '[QUERY: CIVICSPARK CIVIC PLATFORM CAMPAIGNS]', type: 'success' },
-          { text: '• DESCRIPTION: Web app empowering campaigns for civic, environmental, and social causes.', type: 'info' },
-          { text: '• MODULES: Integrated AI validation, NGO network connections, and evidence proof registries.', type: 'info' },
-          { text: '• REDUNDANCY: Shipped reusable UI library decreasing component duplication by 40%.', type: 'info' }
+          { text: '• GITHUB: https://github.com/Aditya-Rauniyar/Civics-Spark', type: 'success' },
+          { text: '• MODULES: Integrated AI validation, NGO network connections, and evidence proof registries.', type: 'info' }
         );
         break;
-      case 'svic':
+      case 'eduadi':
         updatedHistory.push(
-          { text: '[QUERY: SVIC SCHOOL PORTAL]', type: 'success' },
-          { text: '• URL STAGE: Deployed live at https://svic.co.in', type: 'success' },
-          { text: '• MEDIA COMPRESSION: Multi-threaded WebP lossless converter integration.', type: 'info' },
-          { text: '• SPEED GAIN: 35% paint delay decrease via notice-board caching pipelines.', type: 'info' }
+          { text: '[QUERY: EDUADI 1ST YEAR EDTECH PLATFORM]', type: 'success' },
+          { text: '• URL DEPLOY: https://aditya-rauniyar.github.io/EduAdi/', type: 'success' },
+          { text: '• GITHUB: https://github.com/Aditya-Rauniyar/EduAdi', type: 'info' },
+          { text: '• DESCRIPTION: A modern ready UI for an EdTech platform built with HTML, CSS, and JS during 1st year for learning.', type: 'info' }
+        );
+        break;
+      case 'dronaai':
+        updatedHistory.push(
+          { text: '[QUERY: DRONAAI MERN P2P EDTECH PLATFORM]', type: 'success' },
+          { text: '• GITHUB: https://github.com/Aditya-Rauniyar/DronaAi', type: 'success' },
+          { text: '• STUDYSPECIAL: Dynamic Socket.io study spaces for collaborative visual note sharing.', type: 'info' },
+          { text: '• CORE AI: Gemini API auto-generation node for summary flashcards.', type: 'info' }
+        );
+        break;
+      case 'footprint':
+        updatedHistory.push(
+          { text: '[QUERY: FOOTPRINT CARBON CALCULATOR]', type: 'success' },
+          { text: '• GITHUB: https://github.com/Aditya-Rauniyar/Foot_Print', type: 'success' },
+          { text: '• TELEMETRY: Environmental tracking calculator for energy variables & green solutions.', type: 'info' }
+        );
+        break;
+      case 'weatherapp':
+        updatedHistory.push(
+          { text: '[QUERY: WEATHERAPP METEOROLOGY DASHBOARD]', type: 'success' },
+          { text: '• URL DEPLOY: https://aditya-rauniyar.github.io/WeatherApp/', type: 'success' },
+          { text: '• GITHUB: https://github.com/Aditya-Rauniyar/WeatherApp', type: 'info' },
+          { text: '• METRICS: Real-time meteorological forecast metrics via OpenWeather API.', type: 'info' }
         );
         break;
       case 'clear':
@@ -396,8 +426,33 @@ export default function HUD({ activeTab, setActiveTab }) {
           .hud-sidebar {
             display: none;
           }
-          .nav-label {
+          .hud-header {
+            padding: 0 12px;
+            gap: 12px;
+          }
+          .hud-nav {
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            padding: 4px 0;
+            gap: 6px;
+            scrollbar-width: none;
+          }
+          .hud-nav::-webkit-scrollbar {
             display: none;
+          }
+          .hud-nav-item {
+            padding: 6px 10px;
+            font-size: 0.72rem;
+            flex-shrink: 0;
+          }
+        }
+        @media (max-width: 500px) {
+          .system-clock {
+            display: none;
+          }
+          .header-logo span {
+            font-size: 0.75rem !important;
           }
         }
       `}</style>

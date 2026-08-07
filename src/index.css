@@ -158,6 +158,12 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(100%);
 }
 
+.highlight-text {
+  color: var(--accent-mint);
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.25);
+}
+
 /* Cyber Corners */
 .cyber-corners {
   position: relative;
@@ -418,15 +424,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+  .workspace-grid {
+    grid-template-columns: 1fr;
+  }
   .ide-workspace {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
-    height: 560px;
+    height: 520px;
   }
   .ide-file-tree {
     border-right: none;
     border-bottom: 1px solid rgba(16, 185, 129, 0.15);
-    height: 140px;
+    height: auto;
+    max-height: 120px;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 8px 12px;
+  }
+  .ide-file-item {
+    flex-shrink: 0;
+  }
+  .ide-editor-code-container {
+    padding: 12px;
+    font-size: 0.7rem;
   }
 }
 
@@ -435,26 +456,46 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
   .hud-header {
-    padding: 0 12px;
-  }
-  .hud-nav {
-    gap: 8px;
-  }
-  .hud-nav-item {
-    padding: 8px 10px;
+    padding: 0 10px;
   }
   .header-logo span {
     font-size: 0.72rem !important;
     letter-spacing: 0.08em !important;
   }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .stat-card {
+    padding: 12px !important;
+  }
+  .stat-num {
+    font-size: 1.35rem !important;
+  }
+  .stat-lbl {
+    font-size: 0.58rem !important;
+  }
+  .projects-gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 @media (max-width: 480px) {
   .content-area {
-    padding: 16px 12px;
+    padding: 16px 10px !important;
+    gap: 28px !important;
   }
   .cyber-card {
-    padding: 16px 12px;
+    padding: 16px 12px !important;
+  }
+  .main-title {
+    font-size: 2.1rem !important;
+  }
+  .core-bio {
+    font-size: 0.95rem !important;
+  }
+  .skills-container {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -462,3 +503,4 @@ h1, h2, h3, h4, h5, h6 {
 .project-visual-card:hover .project-card-image {
   transform: scale(1.05);
 }
+

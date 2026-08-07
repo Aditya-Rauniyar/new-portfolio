@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import ThreeCanvas from './components/ThreeCanvas';
 import HUD from './components/HUD';
 import Toast from './components/Toast';
@@ -23,8 +24,12 @@ import {
 // Import visual project mockups
 import sehatvaniMockup from './assets/sehatvani_mockup.png';
 import svicPortalMockup from './assets/svic_portal_mockup.png';
-import naariSafetyMockup from './assets/naari_safety_mockup.png';
+import eduadiMockup from './assets/eduadi_mockup.png';
 import bipartitelinkMockup from './assets/bipartitelink_mockup.png';
+import coderoomMockup from './assets/coderoom_mockup.png';
+import civicsparkMockup from './assets/civicspark_mockup.png';
+import footprintMockup from './assets/footprint_mockup.png';
+import weatherAppMockup from './assets/weather_app_mockup.png';
 
 const Github = (props) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -47,68 +52,8 @@ export default function App() {
   const [typedText, setTypedText] = useState('');
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
 
-  // Union of actual portfolio projects data from GitHub
+  // Union of actual portfolio projects data from GitHub in exact sequence
   const visualProjects = [
-    {
-      id: 'sehatvani',
-      title: 'SehatVani',
-      sub: 'AI Medical Translation & Report Summarizer',
-      desc: 'An AI-powered clinical translation platform converting complex laboratory test parameters (T3, T4, Hemoglobin) into simplified, natural language explanations in Hindi and English. Integrates secure JWT authentication and custom Express REST API endpoints.',
-      img: sehatvaniMockup,
-      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT Auth'],
-      live: 'https://sehat-vani.vercel.app',
-      metrics: 'MERN Stack | Langs: Hindi / English | Deployed: Live'
-    },
-    {
-      id: 'civicspark',
-      title: 'CivicSpark',
-      sub: 'Social & Civic Campaign Management Platform',
-      desc: 'The Civic Platform is a full-stack web application that empowers individuals and organizations to create, manage, and support campaigns for social, environmental, and civic causes. With integrated AI, NGO networking, and evidence validation, it transforms civic ideas into actionable movements.',
-      img: svicPortalMockup,
-      tech: ['React.js', 'Vite', 'Tailwind CSS', 'JavaScript'],
-      live: 'https://github.com/Aditya-Rauniyar/Civics-Spark',
-      metrics: 'AI Campaigns | Redundancy: -40% | Integration: Git'
-    },
-    {
-      id: 'dronaai',
-      title: 'DronaAi',
-      sub: 'MERN Real-Time Peer-to-Peer EdTech Lobbies',
-      desc: 'A real-time peer-to-peer educational platform featuring direct chat connections, study lobbies, Gemini API integrations, and collaborative study spaces with Socket.io.',
-      img: bipartitelinkMockup,
-      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'Gemini API'],
-      live: 'https://github.com/Aditya-Rauniyar/DronaAi',
-      metrics: 'MERN Socket | Live Chat Lobbies | AI: Gemini API'
-    },
-    {
-      id: 'eduadi',
-      title: 'EduAdi',
-      sub: 'MERN Classroom & Lecture Hub Coordinator',
-      desc: 'A classroom management and course hub platform built on the MERN stack to enable students and teachers to share course content and collaborate.',
-      img: naariSafetyMockup,
-      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
-      live: 'https://github.com/Aditya-Rauniyar/EduAdi',
-      metrics: 'MERN Hub | Validation: Role-based | Load Index: <120ms'
-    },
-    {
-      id: 'footprint',
-      title: 'FootPrint',
-      sub: 'Personal Environmental Carbon Calculator',
-      desc: 'An environmental tracking calculator designed to compute personal carbon impacts, analyze energy consumption variables, and offer actionable green solutions.',
-      img: null,
-      tech: ['React.js', 'Tailwind CSS', 'JavaScript'],
-      live: 'https://github.com/Aditya-Rauniyar/Foot_Print',
-      metrics: 'Eco Telemetry | Framework: React | Uptime: 100%'
-    },
-    {
-      id: 'weatherapp',
-      title: 'WeatherApp',
-      sub: 'Meteorological Forecast Dashboard',
-      desc: 'A real-time weather forecasting dashboard providing real-time meteorological metrics, forecasts, dynamic wind gauges, and ambient temperatures.',
-      img: null,
-      tech: ['JavaScript', 'HTML5', 'CSS3', 'OpenWeather API'],
-      live: 'https://github.com/Aditya-Rauniyar/WeatherApp',
-      metrics: 'meteorology | OpenWeather API | Lighthouse: 99/100'
-    },
     {
       id: 'svic',
       title: 'SVIC School Portal',
@@ -117,7 +62,85 @@ export default function App() {
       img: svicPortalMockup,
       tech: ['React.js', 'Sanity.io', 'Tailwind CSS', 'WebP Optimizer'],
       live: 'https://svic.co.in',
+      github: null,
       metrics: 'Uptime: 100% | Paint Delay: -35% | Status: Deployed'
+    },
+    {
+      id: 'sehatvani',
+      title: 'SehatVani',
+      sub: 'AI Medical Translation & Report Summarizer',
+      desc: 'An AI-powered clinical translation platform converting complex laboratory test parameters (T3, T4, Hemoglobin) into simplified, natural language explanations in Hindi and English. Integrates secure JWT authentication and custom Express REST API endpoints.',
+      img: sehatvaniMockup,
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT Auth'],
+      live: 'https://sehat-vani.vercel.app',
+      github: 'https://github.com/Aditya-Rauniyar/sehatvani',
+      metrics: 'MERN Stack | Langs: Hindi / English | Deployed: Live'
+    },
+    {
+      id: 'coderoom',
+      title: 'CodeRoom',
+      sub: 'Real-time Collaborative Code Workspace',
+      desc: 'A real-time collaborative code editor platform featuring multi-user rooms, live syntax editing, collaborative workspace sessions, and code execution capabilities.',
+      img: coderoomMockup,
+      tech: ['React.js', 'Node.js', 'Express.js', 'Socket.io', 'Monaco Editor'],
+      live: null,
+      github: 'https://github.com/Aditya-Rauniyar/CodeRoom',
+      metrics: 'Socket.io Collab | Monaco Engine | MERN Architecture'
+    },
+    {
+      id: 'civicspark',
+      title: 'CivicSpark',
+      sub: 'Social & Civic Campaign Management Platform',
+      desc: 'The Civic Platform is a full-stack web application that empowers individuals and organizations to create, manage, and support campaigns for social, environmental, and civic causes. With integrated AI, NGO networking, and evidence validation, it transforms civic ideas into actionable movements.',
+      img: civicsparkMockup,
+      tech: ['React.js', 'Vite', 'Tailwind CSS', 'JavaScript'],
+      live: null,
+      github: 'https://github.com/Aditya-Rauniyar/Civics-Spark',
+      metrics: 'AI Campaigns | Redundancy: -40% | Integration: Git'
+    },
+    {
+      id: 'eduadi',
+      title: 'EduAdi',
+      sub: '1st Year EdTech Learning UI Platform',
+      desc: 'A modern ready UI for an EdTech platform built with HTML, CSS, and JavaScript during 1st year for learning.',
+      img: eduadiMockup,
+      tech: ['HTML5', 'CSS3', 'JavaScript'],
+      live: 'https://aditya-rauniyar.github.io/EduAdi/',
+      github: 'https://github.com/Aditya-Rauniyar/EduAdi',
+      metrics: 'HTML5 / CSS3 / JS | 1st Year Project | Responsive UI'
+    },
+    {
+      id: 'dronaai',
+      title: 'DronaAi',
+      sub: 'MERN Real-Time Peer-to-Peer EdTech Lobbies',
+      desc: 'A real-time peer-to-peer educational platform featuring direct chat connections, study lobbies, Gemini API integrations, and collaborative study spaces with Socket.io.',
+      img: bipartitelinkMockup,
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'Gemini API'],
+      live: null,
+      github: 'https://github.com/Aditya-Rauniyar/DronaAi',
+      metrics: 'MERN Socket | Live Chat Lobbies | AI: Gemini API'
+    },
+    {
+      id: 'footprint',
+      title: 'FootPrint',
+      sub: 'Personal Environmental Carbon Calculator',
+      desc: 'An environmental tracking calculator designed to compute personal carbon impacts, analyze energy consumption variables, and offer actionable green solutions.',
+      img: footprintMockup,
+      tech: ['React.js', 'Tailwind CSS', 'JavaScript'],
+      live: null,
+      github: 'https://github.com/Aditya-Rauniyar/Foot_Print',
+      metrics: 'Eco Telemetry | Framework: React | Uptime: 100%'
+    },
+    {
+      id: 'weatherapp',
+      title: 'WeatherApp',
+      sub: 'Meteorological Forecast Dashboard',
+      desc: 'A real-time weather forecasting dashboard providing real-time meteorological metrics, forecasts, dynamic wind gauges, and ambient temperatures.',
+      img: weatherAppMockup,
+      tech: ['JavaScript', 'HTML5', 'CSS3', 'OpenWeather API'],
+      live: 'https://aditya-rauniyar.github.io/WeatherApp/',
+      github: 'https://github.com/Aditya-Rauniyar/WeatherApp',
+      metrics: 'Meteorology | OpenWeather API | Lighthouse: 99/100'
     }
   ];
 
@@ -247,13 +270,13 @@ export default function App() {
                 </div>
 
                 <p className="core-bio">
-                  I am a Computer Science undergraduate dedicated to rigorous **Data Structures, Algorithms**, and high-performance Web Engineering. Having successfully **solved over 600+ complex code problems** and **qualified the national-level GATE 2026** examination in CS/IT, I focus on building optimized full-stack applications, utilizing secure backend APIs and modular, clean code architectures.
+                  I am a Computer Science undergraduate dedicated to rigorous <strong className="highlight-text">Data Structures &amp; Algorithms</strong>, and high-performance Web Engineering. Having successfully <strong className="highlight-text">solved over 750+ complex code problems</strong> and <strong className="highlight-text">qualified the national-level GATE 2026</strong> examination in CS/IT, I focus on building optimized full-stack applications, utilizing secure backend APIs and modular, clean code architectures.
                 </p>
 
                 {/* SDE COMMAND COUNTERS */}
                 <div className="stats-grid text-mono">
                   <div className="stat-card cyber-corners">
-                    <span className="stat-num neon-text-mint">600+</span>
+                    <span className="stat-num neon-text-mint">750+</span>
                     <span className="stat-lbl">DSA PROBLEMS SOLVED</span>
                   </div>
                   <div className="stat-card cyber-corners">
@@ -290,10 +313,35 @@ export default function App() {
 
             </div>
 
+            {/* FEATURED WORKSPACE SOURCE EXPLORER SECTION ON FRONT PAGE */}
+            <div style={{ marginTop: '54px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '12px', marginBottom: '12px' }}>
+                <h3 className="section-title text-mono" style={{ fontSize: '1.25rem', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span className="neon-text-mint">&gt;</span> FEATURED_SOURCE_WORKSPACE
+                </h3>
+                <button 
+                  onClick={() => {
+                    setActiveTab('projects');
+                    setProjectMode('ide');
+                  }} 
+                  className="cyber-btn"
+                  style={{ fontSize: '0.72rem', padding: '5px 12px' }}
+                >
+                  FULL IDE MODE <ArrowUpRight size={12} />
+                </button>
+              </div>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '20px', fontSize: '0.88rem', maxWidth: '700px' }}>
+                Inspect live production architecture schemas, source files, and project parameters directly in an interactive IDE source editor.
+              </p>
+
+              {/* Embedded Interactive CodeWorkspace IDE */}
+              <CodeWorkspace />
+            </div>
+
             {/* Direct SDE Social Access Anchors */}
             <div className="social-channels" style={{ marginTop: '54px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '24px' }}>
               <span className="text-mono" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>DIRECT_ACCESS_COORDINATES:</span>
-              <div className="social-links" style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '12px' }}>
+              <div className="social-links" style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '12px', flexWrap: 'wrap' }}>
                 <a href="https://www.linkedin.com/in/aditya-rauniyar-410937286/" target="_blank" rel="noreferrer" className="social-link-item">
                   <Linkedin size={20} /> <span className="text-mono" style={{ fontSize: '0.75rem' }}>LinkedIn</span>
                 </a>
@@ -339,14 +387,14 @@ export default function App() {
           <section className="reveal-in">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '12px', marginBottom: '6px' }}>
               <h2 className="section-title text-mono"><span className="neon-text-mint">&gt;</span> SYSTEM_WORKSPACE_EXPLORER</h2>
-              <span className="text-mono" style={{ fontSize: '0.7rem', color: 'var(--accent-mint)' }}>[ ACTIVE_MODULES: 5 ]</span>
+              <span className="text-mono" style={{ fontSize: '0.7rem', color: 'var(--accent-mint)' }}>[ ACTIVE_MODULES: 8 ]</span>
             </div>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '20px', maxWidth: '650px', fontSize: '0.95rem' }}>
               Interactive system diagnostics displaying a visual gallery of deployed production software alongside active directories and core source buffers.
             </p>
 
             {/* Smart Project Mode Select Deck */}
-            <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', borderBottom: '1px solid rgba(16, 185, 129, 0.1)', paddingBottom: '12px' }}>
+            <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', borderBottom: '1px solid rgba(16, 185, 129, 0.1)', paddingBottom: '12px', flexWrap: 'wrap' }}>
               <button 
                 onClick={() => setProjectMode('gallery')} 
                 className={`text-mono ${projectMode === 'gallery' ? 'neon-text-mint' : ''}`}
@@ -395,7 +443,7 @@ export default function App() {
 
             {/* View Render Node */}
             {projectMode === 'gallery' ? (
-              <div className="reveal-in" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
+              <div className="projects-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '24px' }}>
                 {visualProjects.map((project) => (
                   <div 
                     key={project.id} 
@@ -420,14 +468,14 @@ export default function App() {
                           className="project-card-image"
                         />
                       ) : (
-                        /* Beautiful Cyber router visual node mockup for projects without screenshots */
-                        <div style={{ width: '100%', height: '100%', background: project.id === 'footprint' ? 'linear-gradient(135deg, rgba(4, 7, 19, 0.95) 0%, rgba(16, 185, 129, 0.15) 100%)' : 'linear-gradient(135deg, rgba(4, 7, 19, 0.95) 0%, rgba(14, 165, 233, 0.15) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+                        /* Cyber visual node mockup for projects without screenshots */
+                        <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, rgba(4, 7, 19, 0.95) 0%, rgba(16, 185, 129, 0.15) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                           <div className="laser-grid"><div className="laser-line"></div></div>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.02)', border: project.id === 'footprint' ? '1px solid rgba(16, 185, 129, 0.2)' : '1px solid rgba(14, 165, 233, 0.2)', boxShadow: '0 0 15px rgba(255, 255, 255, 0.02)' }}>
-                            <Code size={26} className={project.id === 'footprint' ? "neon-text-mint" : "neon-text-cyan"} style={{ animation: 'spin 16s linear infinite' }} />
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(16, 185, 129, 0.2)', boxShadow: '0 0 15px rgba(255, 255, 255, 0.02)' }}>
+                            <Code size={26} className="neon-text-mint" style={{ animation: 'spin 16s linear infinite' }} />
                           </div>
-                          <span className="text-mono" style={{ fontSize: '0.6rem', color: project.id === 'footprint' ? 'var(--accent-mint)' : 'var(--accent-cyan)', marginTop: '10px', letterSpacing: '0.15em', fontWeight: 'bold' }}>
-                            {project.id === 'footprint' ? '[ ECO_CARBON_TRACKER ]' : '[ METEOROLOGY_METRICS ]'}
+                          <span className="text-mono" style={{ fontSize: '0.6rem', color: 'var(--accent-mint)', marginTop: '10px', letterSpacing: '0.15em', fontWeight: 'bold' }}>
+                            [{project.title.toUpperCase()}_ENGINE]
                           </span>
                         </div>
                       )}
@@ -448,14 +496,14 @@ export default function App() {
                     </div>
 
                     {/* Content Detail Panel */}
-                    <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '16px' }}>
+                    <div style={{ padding: '18px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '16px' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'nowrap' }}>
-                          <h3 className="neon-text-mint" style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '-0.01em' }}>{project.title}</h3>
-                          <span className="text-mono" style={{ fontSize: '0.55rem', color: 'var(--text-muted)', letterSpacing: '0.05em' }}>{project.id.toUpperCase()}_SYS_v1.0</span>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '4px' }}>
+                          <h3 className="neon-text-mint" style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '-0.01em' }}>{project.title}</h3>
+                          <span className="text-mono" style={{ fontSize: '0.55rem', color: 'var(--text-muted)', letterSpacing: '0.05em' }}>{project.id.toUpperCase()}_v1.0</span>
                         </div>
                         <h4 className="text-mono" style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600 }}>{project.sub}</h4>
-                        <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.42, marginTop: '4px' }}>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.42, marginTop: '4px' }}>
                           {project.desc}
                         </p>
                       </div>
@@ -467,23 +515,27 @@ export default function App() {
                         </div>
 
                         {/* Control Actions Row */}
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <button 
-                            onClick={() => setProjectMode('ide')}
-                            className="cyber-btn"
-                            style={{ fontSize: '0.68rem', padding: '6px 12px' }}
-                          >
-                            <Terminal size={11} /> [VIEW_CODE]
-                          </button>
-                          
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                          {project.live ? (
+                            <a 
+                              href={project.live} 
+                              target="_blank" 
+                              rel="noreferrer" 
+                              className="cyber-btn cyber-btn-cyan"
+                              style={{ fontSize: '0.68rem', padding: '6px 12px', flex: 1, justifyContent: 'center' }}
+                            >
+                              [LIVE DEMO] <ExternalLink size={11} />
+                            </a>
+                          ) : null}
+
                           <a 
-                            href={project.live} 
+                            href={project.github} 
                             target="_blank" 
                             rel="noreferrer" 
-                            className="cyber-btn cyber-btn-cyan"
-                            style={{ fontSize: '0.68rem', padding: '6px 12px' }}
+                            className="cyber-btn"
+                            style={{ fontSize: '0.68rem', padding: '6px 12px', flex: 1, justifyContent: 'center' }}
                           >
-                            [LAUNCH] <ExternalLink size={11} />
+                            <Github size={11} /> [GITHUB]
                           </a>
                         </div>
                       </div>
@@ -691,6 +743,9 @@ export default function App() {
         </footer>
 
       </main>
+
+      {/* Vercel Analytics telemetry tracker */}
+      <Analytics />
 
       {/* Cyber Toast alert alerts */}
       {toast.show && (
